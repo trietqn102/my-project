@@ -88,9 +88,9 @@ class MyComponent1 extends React.Component {
           <div>
             <div><Nav /></div>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Control" element={<MyComponent />} />
-              <Route path="/Sign-In" element={<> <UserLogin /> <UserList /></>} />
+              <Route path="./" element={<Home />} />
+              <Route path="./Control" element={<MyComponent />} />
+              <Route path="./Sign-In" element={<> <UserLogin /> <UserList /></>} />
             </Routes>
             <div>
               <button onClick={this.handleLogout}>LogOut</button>
