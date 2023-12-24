@@ -31,11 +31,24 @@ class MyComponent1 extends React.Component {
   };
 
   handleLogin = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     const DataUser = await fetchData();
     const checklogin = checkDbUser(DataUser, this.state.username, this.state.password);
-    this.setState({ checklogin }); // Cập nhật trạng thái sử dụng setState
+    
+    if (checklogin) {
+      // Lưu trạng thái đăng nhập vào Local Storage
+      localStorage.setItem('isLoggedIn', 'true');
+    }
+  
+    this.setState({ checklogin });
   };
+
+  componentDidMount() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+      this.setState({ checklogin: true });
+    }
+  }
 
   handleChangeUsername = (event) => {
     this.setState({ username: event.target.value });
@@ -47,7 +60,8 @@ class MyComponent1 extends React.Component {
 
   handleLogout = async (event) => {
     event.preventDefault();
-    this.setState({ checklogin:event.target.value });
+    localStorage.setItem('isLoggedIn', 'false');
+    this.setState({ checklogin: false });
   };
 
   render() {
