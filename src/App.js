@@ -5,7 +5,7 @@ import MyComponent1 from "./Component/LoginForm";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/my-project">
       <div className="App">
         <h1>DATN - Bui Minh Triet</h1>
         <MyComponent1 />

@@ -14,7 +14,7 @@ const UserList = () => {
   
     return (
       <div>
-        <h1>User Data</h1>
+        <h2>User Data</h2>
         {userData.length === 0 ? (
           <p>No user data available</p>
         ) : (
@@ -23,7 +23,7 @@ const UserList = () => {
             <div key={index}>
               <p><strong>Username:</strong> {user.username}</p>
               <p><strong>Password:</strong> {user.password}</p>
-              <p>-----------</p>
+              <p>------------------------</p>
             </div>
           ))}
         </div>

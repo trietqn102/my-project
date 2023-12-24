@@ -5,6 +5,7 @@ import UserList from './ListUser';
 import MyComponent from './Logdata';
 import Home from './Home';
 import UserLogin from './SiginForm';
+import Filldata from './showdata';
 
 const fetchData = async () => {
   const response = await fetch('https://us-east-1.aws.data.mongodb-api.com/app/application-0-sznak/endpoint/getUsers');
@@ -34,8 +35,6 @@ class MyComponent1 extends React.Component {
     const DataUser = await fetchData();
     const checklogin = checkDbUser(DataUser, this.state.username, this.state.password);
     this.setState({ checklogin }); // Cập nhật trạng thái sử dụng setState
-    this.setState({ username: event.target.value });
-    this.setState({ password: event.target.value });
   };
 
   handleChangeUsername = (event) => {
@@ -88,9 +87,9 @@ class MyComponent1 extends React.Component {
           <div>
             <div><Nav /></div>
             <Routes>
-              <Route path="./" element={<Home />} />
-              <Route path="./Control" element={<MyComponent />} />
-              <Route path="./Sign-In" element={<> <UserLogin /> <UserList /></>} />
+              <Route path="/my-project" element={<Home />} />
+              <Route path="/my-project/Control" element={<><MyComponent/><Filldata /> </>}/>
+              <Route path="/my-project/Sign-In" element={<> <UserLogin /> <UserList /></>} />
             </Routes>
             <div>
               <button onClick={this.handleLogout}>LogOut</button>

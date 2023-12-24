@@ -189,9 +189,7 @@ const MyComponent = () => {
   return (
     <>
       <div>
-        <br />
-        <br />
-        <label htmlFor="DOA">Nhập góc</label>
+        <label htmlFor="DOA"><h2>Nhập góc :</h2></label>
         <input
           type="number"
           value={state.Public.Input.Data.DOA}
@@ -201,7 +199,7 @@ const MyComponent = () => {
         <button onClick={(event) => handleSubmit(event)}>RUN</button>
       </div>
       <div>
-      <h2>Values Out :</h2>
+      <h3>Kết quả</h3>
       <p>Pulse: {Pulse[0].Public.Output.data.value.Pulse}</p>
       <p>Position: {Pulse[0].Public.Output.data.value.position}</p>
       <p>Area: {Pulse[0].Public.Output.data.value.area}</p>
