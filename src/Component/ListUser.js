@@ -15,16 +15,17 @@ const UserList = () => {
     return (
       <div>
         <h2>User Data</h2>
+        <p>------------------------</p>
         {userData.length === 0 ? (
           <p>No user data available</p>
         ) : (
           <div>
             {userData.map((user, index) => (
-            <div key={index}>
+            <ni key={index}>
               <p><strong>Username:</strong> {user.username}</p>
               <p><strong>Password:</strong> {user.password}</p>
               <p>------------------------</p>
-            </div>
+            </ni>
           ))}
         </div>
       )}

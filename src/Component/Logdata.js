@@ -159,16 +159,18 @@ const MyComponent = () => {
     event.preventDefault();
     console.log('> Dữ liệu đã gửi', state);
     axios.post('https://us-east-1.aws.data.mongodb-api.com/app/application-0-sznak/endpoint/postdata', state);
-    fetch('https://us-east-1.aws.data.mongodb-api.com/app/application-0-sznak/endpoint/getdata')
-    .then(response => response.json())
-    .then(Pulse => {
-      // Cập nhật state với dữ liệu người dùng
-      setPulse(Pulse);
-      console.log('dataaaa : ',Pulse)
-    })
-    .catch(error => console.error('Error:', error));  
+    // Wait for 1 second before fetching data
+    setTimeout(() => {
+      fetch('https://us-east-1.aws.data.mongodb-api.com/app/application-0-sznak/endpoint/getdata')
+        .then(response => response.json())
+        .then(Pulse => {
+          // Cập nhật state với dữ liệu người dùng
+          setPulse(Pulse);
+          console.log('dataaaa : ', Pulse);
+        })
+        .catch(error => console.error('Error:', error));
+    }, 1000); // 1000 milliseconds = 1 second
   };
-
   const handleChangedata = (event) => {
     setState((prevState) => ({
       ...prevState, 

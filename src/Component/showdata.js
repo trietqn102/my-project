@@ -41,12 +41,14 @@ const Filldata = () => {
       <h3>Kết quả:</h3>
       <ul>
         {filteredData.map(item => (
-          <li key={item._id}>
+          <ni key={item._id}>
             <p>Time: {item.Public.Output.data.Time}</p>
+            <p>DOA: {item.Public.Input.Data.DOA}</p>
             <p>Pulse: {item.Public.Output.data.value.Pulse}</p>
             <p>Position: {item.Public.Output.data.value.position}</p>
             <p>Area: {item.Public.Output.data.value.area}</p>
-          </li>
+            <p>------------------------</p>
+          </ni>
         ))}
       </ul>
     </div>
