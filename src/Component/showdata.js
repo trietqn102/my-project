@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './showdata.css'
 
 const Filldata = () => {
   const [positionFilter, setPositionFilter] = useState('');
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [totalResults, setTotalResults] = useState(0);
 
   useEffect(() => {
     fetchData();
@@ -26,32 +28,34 @@ const Filldata = () => {
   const handleFilterSubmit = () => {
     const filteredResults = data.filter(item => item.Public.Output.data.value.position === parseInt(positionFilter, 10));
     setFilteredData(filteredResults);
+    setTotalResults(filteredResults.length);
   };
 
   return (
-    <div>
-      <label>
-        <h2>Nhập vị trí cần truy vấn :</h2>
-        <input type="text" value={positionFilter} onChange={handleFilterChange} />
-      </label>
-      <div>
-      <button onClick={handleFilterSubmit}>Submit</button>
+<div>
+  <label>
+    <h2>Nhập vị trí cần truy vấn :</h2>
+    <input type="text" value={positionFilter} onChange={handleFilterChange} />
+  </label>
+  <div>
+    <br />
+    <button onClick={handleFilterSubmit}>Submit</button>
+  </div>
+  <h3>Tổng số lượng của vị trí truy vấn: {totalResults}</h3>
+  <div className="result-list">
+    {filteredData.map(item => (
+      <div key={item._id} className="result-item">
+        <p><strong>Time:</strong> {item.Public.Output.data.Time}</p>
+        <p><strong>DOA:</strong> {item.Public.Input.Data.DOA}</p>
+        <p><strong>Pulse:</strong> {item.Public.Output.data.value.Pulse}</p>
+        <p><strong>Position:</strong> {item.Public.Output.data.value.position}</p>
+        <p><strong>Area:</strong> {item.Public.Output.data.value.area}</p>
+        
       </div>
-
-      <h3>Kết quả:</h3>
-      <ul>
-        {filteredData.map(item => (
-          <ni key={item._id}>
-            <p>Time: {item.Public.Output.data.Time}</p>
-            <p>DOA: {item.Public.Input.Data.DOA}</p>
-            <p>Pulse: {item.Public.Output.data.value.Pulse}</p>
-            <p>Position: {item.Public.Output.data.value.position}</p>
-            <p>Area: {item.Public.Output.data.value.area}</p>
-            <p>------------------------</p>
-          </ni>
-        ))}
-      </ul>
-    </div>
+    ))}
+  </div>
+</div>
   );
 };
+
 export default Filldata;

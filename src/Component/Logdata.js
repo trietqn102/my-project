@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './Logdata.css';
 const MyComponent = () => {
   const day = new Date();
   const tranday = day.toLocaleString();
@@ -189,9 +189,9 @@ const MyComponent = () => {
   };
 
   return (
-    <>
+<div className="my-component-container">
       <div>
-        <label htmlFor="DOA"><h2>Nhập góc :</h2></label>
+        <label htmlFor="DOA"><h2>Nhập góc (DOA) :</h2></label>
         <input
           type="number"
           value={state.Public.Input.Data.DOA}
@@ -200,13 +200,13 @@ const MyComponent = () => {
         <br />
         <button onClick={(event) => handleSubmit(event)}>RUN</button>
       </div>
-      <div>
       <h3>Kết quả</h3>
-      <p>Pulse: {Pulse[0].Public.Output.data.value.Pulse}</p>
-      <p>Position: {Pulse[0].Public.Output.data.value.position}</p>
-      <p>Area: {Pulse[0].Public.Output.data.value.area}</p>
+      <div className="result-container">
+        <p><strong>Pulse:</strong> {Pulse[0].Public.Output.data.value.Pulse}</p>
+        <p><strong>Position:</strong> {Pulse[0].Public.Output.data.value.position}</p>
+        <p><strong>Area:</strong> {Pulse[0].Public.Output.data.value.area}</p>
+      </div>
     </div>
-    </>
   );
 };
 
